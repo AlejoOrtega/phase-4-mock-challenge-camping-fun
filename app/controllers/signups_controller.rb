@@ -3,7 +3,7 @@ class SignupsController < ApplicationController
     def create
         signup= Signup.new(signups_params)
         if signup.save
-            render json: signup, include: ['activity'], status: :ok
+            render json: signup.activity, status: :created
         else
             render json: {errors: signup.errors.full_messages}, status: :unprocessable_entity
         end
